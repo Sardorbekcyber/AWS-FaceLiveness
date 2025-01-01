@@ -67,6 +67,8 @@ dependencies {
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
 
+    implementation(libs.androidx.activity)
+
     // FaceLivenessDetector dependency
     implementation("com.amplifyframework.ui:liveness:1.2.6")
 
@@ -78,4 +80,15 @@ dependencies {
 
     // Support for Java 8 features
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:1.1.5")
+
+    // Concurrent library for asynchronous coroutines
+    implementation("androidx.concurrent:concurrent-futures-ktx:1.2.0")
+
+    // CameraX core library
+    // Camerax implementation
+    val cameraxVersion = "1.3.1"
+    implementation ("androidx.camera:camera-core:${cameraxVersion}")
+    implementation ("androidx.camera:camera-camera2:${cameraxVersion}")
+    implementation ("androidx.camera:camera-view:${cameraxVersion}")
+    implementation ("androidx.camera:camera-lifecycle:$cameraxVersion")
 }

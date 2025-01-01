@@ -7,6 +7,7 @@ androidx-test-ext-junit = "1.1.5"
 espresso-core = "3.5.1"
 lifecycle-runtime-ktx = "2.6.1"
 activity-compose = "1.7.0"
+activityx = "1.9.2"
 compose-bom = "2023.08.00"
 
 #AudioRecordView
@@ -30,6 +31,7 @@ ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 material3 = { group = "androidx.compose.material3", name = "material3" }
 
+androidx-activity = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityx" }
 
 #AudioRecordView
 audiorecordview = { module = "com.github.Armen101:AudioRecordView", version.ref = "audiorecordview" }

@@ -1,6 +1,5 @@
 package com.example.demo
 
-import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,9 +7,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -26,17 +25,17 @@ import androidx.compose.ui.unit.dp
 
 class MainActivity : ComponentActivity() {
 
-    lateinit var cameraPermission: ActivityResultLauncher<String>
+    //    lateinit var cameraPermission: ActivityResultLauncher<String>
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        cameraPermission = registerForActivityResult(
-            ActivityResultContracts.RequestPermission()
-        ) { isGranted ->
-            Log.i("MyApp", "Permission $isGranted")
-        }
-        cameraPermission.launch(Manifest.permission.CAMERA)
+//        cameraPermission = registerForActivityResult(
+//            ActivityResultContracts.RequestPermission()
+//        ) { isGranted ->
+//            Log.i("MyApp", "Permission $isGranted")
+//        }
+//        cameraPermission.launch(Manifest.permission.CAMERA)
 
         activityResultLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
@@ -55,19 +54,41 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .padding(paddingValues)
                     ) {
-                        Button(
-                            onClick = {
-                                val intent = Intent(this@MainActivity, LivenessCheckActivity::class.java)
-                                activityResultLauncher.launch(intent)
-                            },
-                            modifier = Modifier
-                                .align(alignment = Alignment.Center)
-                                .width(180.dp)
-                                .height(60.dp)
+                        Column(
+                            verticalArrangement = Arrangement.spacedBy(6.dp),
+                            modifier = Modifier.align(alignment = Alignment.Center)
                         ) {
-                            Text(
-                                text = "Start verification"
-                            )
+                            Button(
+                                onClick = {
+                                    val intent = Intent(
+                                        this@MainActivity, LivenessCheckActivity::class.java
+                                    )
+                                    activityResultLauncher.launch(intent)
+                                },
+                                modifier = Modifier
+                                    .width(180.dp)
+                                    .height(60.dp)
+                            ) {
+                                Text(
+                                    text = "Start verification"
+                                )
+                            }
+
+                            Button(
+                                onClick = {
+                                    val intent = Intent(
+                                        this@MainActivity, CameraActivity::class.java
+                                    )
+                                    startActivity(intent)
+                                },
+                                modifier = Modifier
+                                    .width(180.dp)
+                                    .height(60.dp)
+                            ) {
+                                Text(
+                                    text = "Start CameraX"
+                                )
+                            }
                         }
                     }
                 }
